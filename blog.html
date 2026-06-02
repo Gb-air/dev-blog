@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://w3.org">
+<html>
+<head>
+    <title>codeBlog.2000 // Developer Log & Journal</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <style type="text/css">
+        body {
+            background-color: #000080; /* Win98 Teal/Navy */
+            color: #C0C0C0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            margin: 0;
+            padding: 20px;
+        }
+        table {
+            border: 2px outset #FFFFFF;
+            background-color: #000000;
+        }
+        th, td {
+            padding: 10px;
+            vertical-align: top;
+        }
+        a:link { color: #00FFFF; text-decoration: underline; }
+        a:visited { color: #800080; }
+        a:hover { color: #FF00FF; text-decoration: blink; }
+        .sidebar {
+            background-color: #314a60;
+            border-right: 2px inset #FFFFFF;
+            width: 200px;
+        }
+        .content {
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+        .header {
+            background-color: #000080;
+            color: #FFFFFF;
+            font-weight: bold;
+            font-size: 18px;
+            border-bottom: 2px inset #FFFFFF;
+        }
+        .section-title {
+            color: #FFFFFF;
+            background-color: #800000;
+            font-weight: bold;
+            font-size: 13px;
+            padding: 3px;
+            margin-bottom: 8px;
+            border: 1px outset #FFFFFF;
+        }
+        .blog-post {
+            margin-bottom: 25px;
+        }
+        .post-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #000080;
+            border-bottom: 2px solid #000080;
+            padding-bottom: 2px;
+        }
+        .post-meta {
+            font-size: 11px;
+            color: #555555;
+            margin-bottom: 10px;
+        }
+        /* Classic 2000s Code Block Styling */
+        .code-box {
+            background-color: #000000;
+            color: #00FF00;
+            font-family: Fixedsys, 'Courier New', monospace;
+            padding: 10px;
+            border: 2px inset #FFFFFF;
+            overflow-x: auto;
+            font-size: 12px;
+            line-height: 14px;
+        }
+        .tag-cloud {
+            font-size: 11px;
+            line-height: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<table width="850" align="center" cellspacing="0" cellpadding="0">
+    <!-- Header Row -->
+    <tr>
+        <td colspan="2" class="header" height="80">
+            &lt; // Cyber_Coder's Development Log // &gt;
+        </td>
+    </tr>
+    <tr>
+        <!-- Left Sidebar -->
+        <td class="sidebar">
+            <div class="section-title">Navigation</div>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="blog_archive.html"><b>Dev Blog</b></a></li>
+                <li><a href="guestbook.html">Guestbook</a></li>
+                <li><a href="#">My Projects</a></li>
+                <li><a href="#">Links/Webring</a></li>
+            </ul>
+
+            <div class="section-title" style="margin-top: 20px;">Categories</div>
+            <font size="2">
+            • <a href="#">C++ Programming</a> (4)<br>
+            • <a href="#">HTML / CSS</a> (12)<br>
+            • <a href="#">PHP & MySQL</a> (8)<br>
+            • <a href="#">Linux / Slackware</a> (3)<br>
+            • <a href="#">Personal / Rants</a> (15)
+            </font>
+
+            <div class="section-title" style="margin-top: 20px;">Archives</div>
+            <font size="2">
+            • <a href="#">June 2000</a> (1)<br>
+            • <a href="#">May 2000</a> (5)<br>
+            • <a href="#">April 2000</a> (4)<br>
+            • <a href="#">March 2000</a> (8)
+            </font>
+            
+            <br><br>
+            <div align="center">
+                <img src="https://picsum.photos" border="1" alt="Valid HTML 4.01"><br>
+                <font size="1">HTML 4.01 Ready</font>
+            </div>
+        </td>
+
+        <!-- Main Blog Posts Content -->
+        <td class="content">
+            
+            <!-- Post 1 -->
+            <div class="blog-post">
+                <div class="post-title">Fixing the Guestbook Security Flaw</div>
+                <div class="post-meta">Posted by Cyber_Coder @ 08:45 PM | Category: <a href="#">PHP & MySQL</a> | <a href="#">Comments (3)</a></div>
+                <p>Yesterday someone posted an XSS script into my guestbook form and caused an infinite alert loop for everyone visiting. Oops! Note to self: never trust user input.</p>
+                <p>I fixed it by forcing the text input through the PHP function below before parsing it into the database table. Tables don't break anymore!</p>
+                
+                <!-- Code Sample Block -->
+                <div class="code-box">
+&lt;?php<br>
+// Prevent scripts injection in Y2K<br>
+$clean_name = htmlspecialchars($_GET['name']);<br>
+$clean_comment = strip_tags($_GET['comment']);<br>
+echo "Saved entry for: " . $clean_name;<br>
+?&gt;
+                </div>
+                <p>Next up: I need to write a text-file database because my free hosting package only allows 1 MySQL database and I'm using it for my hit counter.</p>
+            </div>
+
+            <hr noshade size="1">
+
+            <!-- Post 2 -->
+            <div class="blog-post">
+                <div class="post-title">Why CSS Layouts are a Scam</div>
+                <div class="post-meta">Posted by Cyber_Coder @ 02:10 AM | Category: <a href="#">HTML / CSS</a> | <a href="#">Comments (14)</a></div>
+                <p>Some web design purists on Slashdot keep telling me to stop using HTML tables for structural layout and switch entirely to CSS <code>div</code> containers and <code>float: left;</code> rules.</p>
+                <p>I spent 5 hours trying to make a basic 2-column sidebar layout using divs today. It looks fine in Internet Explorer 5, but completely breaks in Netscape Navigator 4.7! The sidebar falls all the way to the bottom of the screen.</p>
+                <p><b>Conclusion:</b> Tables are standard, robust, and they work everywhere. CSS is just a passing trend for text color and links.</p>
+            </div>
+
+            <hr noshade size="1">
+
+            <!-- Pagination Grid -->
+            <table width="100%" border="0" style="background:transparent; border:none; font-size:12px; color:#000000;">
+                <tr>
+                    <td align="left"><a href="#">&lt;&lt; Older Posts</a></td>
+                    <td align="center">Page 1 of 3</td>
+                    <td align="right"><font color="#666666">Newer Posts &gt;&gt;</font></td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
